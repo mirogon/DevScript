@@ -1,10 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\main.cpp">
+    <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\Command\ICommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\Command\NewDirCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\CommandExecuter\CommandExecuter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\CommandExecuter\ICommandExecuter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\DevScriptInterpreter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\ScriptParser\IScriptParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\ScriptParser\ScriptParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -7,11 +7,11 @@ class ScriptParser : public IScriptParser
 {
     public:
 
-    ScriptParser() = default;
+    ScriptParser();
     void SetFile(const std::string& file) override;
-    
+    std::vector<std::shared_ptr<ICommand>> Parse() override;
+
     private:
 
-    void Parse() override;
 
 };

@@ -8,7 +8,8 @@ void CommandExecuter::ExecuteCommand(std::shared_ptr<ICommand> command)
 {
     if(IsType<ICommand, NewDirCommand>(command.get()))
     {
-        std::cout<<"NewDirCommand"<<std::endl;
+        NewDirCommand* newdirCmd = dynamic_cast<NewDirCommand*>(command.get());
+        std::cout<<"NewDirCommand: "<<newdirCmd->Path()<<std::endl;
     }
     
 }

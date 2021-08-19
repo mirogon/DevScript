@@ -1,9 +1,10 @@
 #include "DevScriptInterpreter.h"
 #include "ScriptParser/IScriptParser.h"
 
-DevScriptInterpreter::DevScriptInterpreter(int argc, char* argv[], IScriptParser* scriptParser)
+DevScriptInterpreter::DevScriptInterpreter(int argc, char* argv[], IScriptParser* scriptParser, ICommandExecuter* commandExecuter)
 {
     this->scriptParser.reset(scriptParser);
+    this->commandExecuter.reset(commandExecuter);
     if(argc < 2)
     {
         PrintUsage();
@@ -28,7 +29,13 @@ DevScriptInterpreter::DevScriptInterpreter(int argc, char* argv[], IScriptParser
 
 void DevScriptInterpreter::Execute()
 {
-    this->scriptParser->Parse();
+    auto commands = scriptParser->Parse();
+
+    for(auto it : commands)
+    {
+       commandExecuter->ExecuteCommand(it); 
+    }
+
 }
 
 void DevScriptInterpreter::PrintUsage()

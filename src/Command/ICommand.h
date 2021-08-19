@@ -1,7 +1,10 @@
 #pragma once
-#include "global.h"
+#include "../global.h"
 
 class ICommand
 {
+    public:
+
+    virtual ~ICommand(){};
 
 };
