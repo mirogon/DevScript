@@ -1,13 +1,9 @@
 #include "DevScriptInterpreter.h"
+#include "ScriptParser/IScriptParser.h"
 
-
-void DevScriptInterpreter::PrintUsage()
+DevScriptInterpreter::DevScriptInterpreter(int argc, char* argv[], IScriptParser* scriptParser)
 {
-    std::cout<<"Usage: DevScript <file>"<<std::endl;
-}
-
-DevScriptInterpreter::DevScriptInterpreter(int argc, char* argv[])
-{
+    this->scriptParser.reset(scriptParser);
     if(argc < 2)
     {
         PrintUsage();
@@ -27,5 +23,16 @@ DevScriptInterpreter::DevScriptInterpreter(int argc, char* argv[])
         throw std::exception("file does not exist!");
     }
 
-    this->file = file;
+    this->scriptParser->SetFile(file);
 }
+
+void DevScriptInterpreter::Execute()
+{
+    this->scriptParser->Parse();
+}
+
+void DevScriptInterpreter::PrintUsage()
+{
+    std::cout<<"Usage: DevScript <file>"<<std::endl;
+}
+

@@ -1,11 +1,14 @@
 #include "DevScriptInterpreter.h"
 
+#include "ScriptParser/ScriptParser.h"
+
 int main(int argc, char* argv[])
 {
 
     try
     {
-        DevScriptInterpreter interpreter(argc, argv);
+        std::unique_ptr<IScriptParser> scriptParser = std::make_unique<ScriptParser>();
+        DevScriptInterpreter interpreter(argc, argv, scriptParser.release());
     }
     catch(const std::exception& e)
     {
