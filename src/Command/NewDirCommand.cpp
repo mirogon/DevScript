@@ -1,16 +1,16 @@
 #include "NewDirCommand.h"
 
 
-NewDirCommand::NewDirCommand(const std::string& newPath):
+NewDirCommand::NewDirCommand(const std::string& pPath):
     ICommand()
 {
-    this->newPath = newPath;
+    this->newPath = pPath;
 }
 
-NewDirCommand::NewDirCommand(std::string&& newDirPath):
+NewDirCommand::NewDirCommand(std::string&& pPath):
     ICommand()
 {
-    this->newPath = newPath;
+    this->newPath = pPath;
 }
 
 std::string NewDirCommand::Path()
