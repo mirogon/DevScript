@@ -1,0 +1,10 @@
+^C:\USERS\M1SMR\DESKTOP\DEVSCRIPT\BUILD\CMAKEFILES\A985A67B9C89C81B774E595F7C75742A\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/m1smr/Desktop/DevScript -BC:/Users/m1smr/Desktop/DevScript/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/m1smr/Desktop/DevScript/build/DevScript.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
