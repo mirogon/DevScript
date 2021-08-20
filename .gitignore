@@ -2,4 +2,5 @@
 build/
 out/
 vscode/
-test.ds/
+test.ds
+*.ds
