@@ -1,6 +1,6 @@
 .git/
 build/
 out/
-vscode/
+.vscode/
 test.ds
 *.ds
