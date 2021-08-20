@@ -3,6 +3,7 @@
 #include "../Command/ICommand.h"
 #include "../Command/NewDirCommand.h"
 #include "../Command/NewFileCommand.h"
+#include "../Command/RemoveFileCommand.h"
 
 void CommandExecuter::ExecuteCommand(std::shared_ptr<ICommand> command)
 {
@@ -20,6 +21,13 @@ void CommandExecuter::ExecuteCommand(std::shared_ptr<ICommand> command)
         std::fstream fileOut;
         fileOut.open(newFileCmd->Filename(), std::ios::out);
         fileOut.close();
+    }
+
+    else if(IsType<ICommand, RemoveFileCommand>(command.get()))
+    {
+        RemoveFileCommand* rmFileCmd = dynamic_cast<RemoveFileCommand*>(command.get());
+        std::cout<<"RemoveFileCommand: "<<rmFileCmd->Filename()<<std::endl;
+        std::filesystem::remove(rmFileCmd->Filename());
     }
 
 }
