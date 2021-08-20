@@ -303,6 +303,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\Command\ICommand.cpp" />
     <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\Command\NewDirCommand.cpp" />
+    <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\Command\NewFileCommand.cpp" />
     <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\CommandExecuter\CommandExecuter.cpp" />
     <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\CommandExecuter\ICommandExecuter.cpp" />
     <ClCompile Include="C:\Users\m1smr\Desktop\DevScript\src\DevScriptInterpreter.cpp" />

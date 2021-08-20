@@ -1,1 +1,3 @@
 mkdir(newFolder5)
+create_file(testi.txt)
+create_file(newFolder5/testnew.txtttt)

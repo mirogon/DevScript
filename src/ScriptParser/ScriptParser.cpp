@@ -1,5 +1,6 @@
 #include "ScriptParser.h"
 #include "../Command/NewDirCommand.h"
+#include "../Command/NewFileCommand.h"
 
 ScriptParser::ScriptParser():
     IScriptParser()
@@ -39,6 +40,26 @@ std::vector<std::shared_ptr<ICommand>> ScriptParser::Parse()
             }
 
             commands.push_back(std::make_shared<NewDirCommand>(folderName)); 
+            continue;
+        }
+        else if(line.find("create_file") != std::string::npos)
+        {
+            //Get filename
+            std::string newFileName = "";
+            size_t parenthesesStart = line.find('(');
+            if(parenthesesStart != std::string::npos)
+            {
+                for(auto it = line.begin() + parenthesesStart +1; *it != ')'; ++it)
+                {
+                    if(*it == ' ' || *it == 34 || *it == 39)
+                    {
+                        continue;
+                    }
+                    newFileName+=*it;
+                }
+            }
+            commands.push_back(std::make_shared<NewFileCommand>(newFileName));
+            continue;
         }
     }
     fileReadStream.close();
