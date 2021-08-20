@@ -10,6 +10,7 @@ void CommandExecuter::ExecuteCommand(std::shared_ptr<ICommand> command)
     {
         NewDirCommand* newdirCmd = dynamic_cast<NewDirCommand*>(command.get());
         std::cout<<"NewDirCommand: "<<newdirCmd->Path()<<std::endl;
+        std::filesystem::create_directories(newdirCmd->Path());
     }
     
 }

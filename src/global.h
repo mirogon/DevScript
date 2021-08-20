@@ -2,10 +2,12 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <memory>
 #include <cstdlib>
 #include <filesystem>
+#include <fstream>
 
 template <class T, class U>
 inline bool IsType(T* t)
