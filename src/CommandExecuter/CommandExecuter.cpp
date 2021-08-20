@@ -5,6 +5,7 @@
 #include "../Command/NewFileCommand.h"
 #include "../Command/RemoveFileCommand.h"
 #include "../Command/CopyFileCommand.h"
+#include "../Command/MoveFileCommand.h"
 
 void CommandExecuter::ExecuteCommand(std::shared_ptr<ICommand> command)
 {
@@ -36,6 +37,12 @@ void CommandExecuter::ExecuteCommand(std::shared_ptr<ICommand> command)
         CopyFileCommand* cpFileCmd = dynamic_cast<CopyFileCommand*>(command.get());
         std::cout<<"CopyFileCommand: "<<cpFileCmd->FileToCopy()<<", "<<cpFileCmd->PathToCopyTo()<<std::endl;
         std::filesystem::copy(cpFileCmd->FileToCopy(), cpFileCmd->PathToCopyTo());
+    }
+
+    else if(MoveFileCommand* mvFileCmd = DynCast<ICommand, MoveFileCommand>(command.get()); mvFileCmd) 
+    {
+        std::cout<<"MoveFileCommand: "<<mvFileCmd->FileToMove()<<", "<<mvFileCmd->PathToMoveTo()<<std::endl;
+        std::filesystem::rename(mvFileCmd->FileToMove(), mvFileCmd->PathToMoveTo());
     }
 
 }

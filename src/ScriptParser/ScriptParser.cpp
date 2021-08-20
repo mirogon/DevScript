@@ -3,6 +3,7 @@
 #include "../Command/NewFileCommand.h"
 #include "../Command/RemoveFileCommand.h"
 #include "../Command/CopyFileCommand.h"
+#include "../Command/MoveFileCommand.h"
 
 ScriptParser::ScriptParser():
     IScriptParser()
@@ -118,6 +119,44 @@ std::vector<std::shared_ptr<ICommand>> ScriptParser::Parse()
             }
 
             commands.push_back(std::make_shared<CopyFileCommand>(fileToCopy, pathToCopyTo));
+            continue;
+        }
+        else if(line.find("move_file") != std::string::npos || line.find("mv") != std::string::npos)
+        {
+            //File to move
+            std::string fileToMove = "";
+            size_t parenthesesStart = line.find('(');
+            if(parenthesesStart == std::string::npos)
+            {
+                continue;
+            }
+            for(auto it = line.begin() + parenthesesStart +1; *it != ','; ++it)
+            {
+                if(*it == ' ' || *it == 34 || *it == 39)
+                {
+                    continue;
+                }
+                fileToMove += *it;
+            }
+
+            //path to move to
+            std::string newFilePath = "";
+            size_t commaStart = line.find(',');
+            if(commaStart == std::string::npos)
+            {
+                continue;
+            }
+
+            for(auto it = line.begin() + commaStart +1; *it != ')'; ++it)
+            {
+                if(*it == ' ' || *it == 34 || *it == 39)
+                {
+                    continue;
+                }
+                newFilePath += *it;
+            }
+
+            commands.push_back(std::make_shared<MoveFileCommand>(fileToMove, newFilePath));
             continue;
         }
     }

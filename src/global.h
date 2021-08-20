@@ -18,3 +18,9 @@ inline bool IsType(T* t)
    }
    return false;
 }
+
+template <class T, class U>
+inline U* DynCast(T* t)
+{
+    return dynamic_cast<U*>(t);
+}
